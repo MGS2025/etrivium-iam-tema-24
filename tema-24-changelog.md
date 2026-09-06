@@ -4,6 +4,19 @@
 
 ---
 
+## v1.2 — 2026-09-06 — Corrección de formato en el conversor
+
+**Estado**: pendiente de validación por el IAM.
+
+**Motivo**: el texto mostraba marcas de Markdown sin convertir (`**`) en la descripción de la arquitectura de React Native.
+
+### Alcance
+
+- Se porta a este tema el **arreglo del conversor** que la serie incorporó a partir del Tema 28: la negrita se procesa **antes** que la cursiva y sin ser codiciosa.
+- **Sin cambios de contenido**: solo formato. El defecto venía de la primera publicación del tema.
+
+---
+
 ## v1.1 — 2026-09-06 — Ficha de extensión y tiempo de estudio
 
 **Estado**: sin cambios de contenido. Solo se añade información sobre el propio tema.
