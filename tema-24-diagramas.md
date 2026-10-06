@@ -246,10 +246,10 @@
   <rect x="140" y="136" width="510" height="34" rx="5" fill="#2d8659"/>
   <text x="395" y="158" text-anchor="middle" class="t6">Petición HTTPS · lectura de base de datos · procesado de imagen</text>
   <path d="M230 84 L230 132" stroke="#e89822" stroke-width="3" marker-end="url(#a6)"/>
-  <text x="240" y="112" style="font:700 10px system-ui;fill:#e89822">lanza (async)</text>
+  <text x="242" y="112" style="font:700 10px system-ui;fill:#e89822">lanza (async)</text>
   <path d="M560 132 L560 84" stroke="#e89822" stroke-width="3" marker-end="url(#a6)"/>
-  <text x="418" y="112" style="font:700 10px system-ui;fill:#e89822">devuelve el resultado a la UI</text>
-  <defs><marker id="a6" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#e89822"/></marker></defs>
+  <text x="548" y="112" text-anchor="end" style="font:700 10px system-ui;fill:#e89822">devuelve el resultado a la UI</text>
+  <defs><marker id="a6" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M0 0 L12 7 L0 14 z" fill="#e89822"/></marker></defs>
   <rect x="60" y="192" width="560" height="60" rx="6" fill="#d13c3c"/>
   <text x="340" y="214" text-anchor="middle" class="t6">Si el hilo principal se bloquea</text>
   <text x="340" y="232" text-anchor="middle" class="s6">Android: diálogo ANR (Application Not Responding)</text>
