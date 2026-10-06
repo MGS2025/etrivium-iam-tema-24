@@ -4,6 +4,21 @@
 
 ---
 
+## v1.3 — 2026-10-01 — Normas vigentes y correcciones comunes de la revisión
+
+**Motivo**: revisión de la serie del 01-10-2026 (decisiones de Joan y María): normas caducadas con el patrón de dos filas en Fuentes y correcciones comunes (referencias al cliente y al origen del material, promesas sobre el examen, AP → AAPP).
+
+### Cambios
+
+- **RFC 8446 → RFC 9846**: fila vigente y fila histórica en Fuentes; las dos citas de §3 y §5 pasan a `[RFC9846]`.
+- **ISO/IEC 25010:2023**: la fila `[ISO25010]` pasa a las nueve características de 2023 y se añade `[ISO25010-2011]` como histórica; en §5 los criterios pasan a «flexibilidad (la antigua portabilidad)» y «capacidad de interacción (la antigua usabilidad)». Ninguna pregunta del test cambia (las referencias `[ISO25010]` apuntan ya a la vigente).
+- Leyenda de las cajas: se quita «con alta probabilidad de aparecer en el test oficial».
+- Fuera las promesas sobre el examen en contenido («fuente más habitual de preguntas de examen», «pregunta clásica», «muy preguntada», «se repite en examen», «materia recurrente»…).
+- Validación: «enunciado literal del esqueleto» → «enunciado literal del tema».
+- Títulos de las cajas homogeneizados con los temas 1-10 (revisión jurídica): «Dato clave», «Ejemplo de aplicación en el Ayto» y «Relación con otros temas»; las cajas «Ejercicio resuelto» no cambian.
+
+---
+
 ## v1.2 — 2026-09-06 — Corrección de formato en el conversor
 
 **Estado**: pendiente de validación por el IAM.

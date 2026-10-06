@@ -27,14 +27,16 @@
 | `[WEB-APP-MANIFEST]` | W3C. *Web Application Manifest*. w3.org/TR/appmanifest. Metadatos de instalación de una PWA. |
 | `[ECMA262]` | Ecma International. *ECMA-262: ECMAScript Language Specification*. Base de JavaScript en contenedores web, React Native y PWA. |
 | `[RFC9110]` | IETF HTTP Working Group. *RFC 9110: HTTP Semantics* (2022). Métodos, cabeceras y códigos de estado usados por el cliente móvil al consumir una API. |
-| `[RFC8446]` | IETF. *RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3*. Cifrado del tráfico app-servidor. |
+| `[RFC9846]` | IETF. *RFC 9846: The Transport Layer Security (TLS) Protocol Version 1.3* (julio de 2026). Obsoleta los RFC 5077, 5246, 6961, 7627, 8422 y 8446: es la especificación vigente de TLS 1.3 y sustituye a la de 2018. Cifrado del tráfico app-servidor. |
+| `[RFC8446]` | IETF. *RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3* (agosto de 2018). Obsoletado por el RFC 9846. Se conserva la referencia porque es la que recogen los temarios al uso. |
 | `[RFC6749]` | IETF. *RFC 6749: The OAuth 2.0 Authorization Framework*. |
 | `[RFC8252]` | IETF. *RFC 8252: OAuth 2.0 for Native Apps* (BCP 212). Recomienda el navegador del sistema y **PKCE** frente a WebView embebido para la autorización en apps móviles. |
 | `[RFC7636]` | IETF. *RFC 7636: Proof Key for Code Exchange (PKCE)*. Protección del flujo de código de autorización en clientes públicos como una app móvil. |
 | `[FIELDING2000]` | Fielding, R. T. *Architectural Styles and the Design of Network-based Software Architectures* (UC Irvine, 2000). Origen del estilo REST consumido por el cliente móvil. |
 | `[OWASP-MASVS]` | OWASP Foundation. *Mobile Application Security Verification Standard (MASVS)* y *Mobile Application Security Testing Guide (MASTG)*. mas.owasp.org. Referencia canónica de seguridad en aplicaciones móviles. |
 | `[OWASP-MOBILE]` | OWASP Foundation. *OWASP Mobile Top 10* — riesgos más críticos en aplicaciones móviles (almacenamiento inseguro, comunicación insegura, autenticación inadecuada…). owasp.org/www-project-mobile-top-10. |
-| `[ISO25010]` | ISO/IEC 25010 (SQuaRE). *Modelo de calidad del producto software* — adecuación funcional, eficiencia de desempeño, compatibilidad, usabilidad, fiabilidad, seguridad, mantenibilidad y portabilidad. Marco de los criterios comparativos de §5. |
+| `[ISO25010]` | ISO/IEC 25010:2023 (SQuaRE). *Modelo de calidad del producto software*, edición vigente, que anula y sustituye a la de 2011 — nueve características: adecuación funcional, eficiencia de desempeño, compatibilidad, capacidad de interacción (antes «usabilidad»), fiabilidad, seguridad, mantenibilidad, flexibilidad (antes «portabilidad») y protección (*safety*, nueva). Marco de los criterios comparativos de §5. |
+| `[ISO25010-2011]` | ISO/IEC 25010:2011 (SQuaRE). *System and software quality models* — ocho características (adecuación funcional, eficiencia de desempeño, compatibilidad, usabilidad, fiabilidad, seguridad, mantenibilidad y portabilidad). Anulada y sustituida por la ISO/IEC 25010:2023. Se conserva la referencia porque es la que recogen los temarios al uso. |
 | `[SQLITE]` | SQLite Consortium. *SQLite Documentation — About SQLite, serverless, zero-configuration*. sqlite.org. Motor embebido usado por Android e iOS. |
 
 ## Tier 2 — Frameworks, motores y servicios concretos
@@ -70,4 +72,4 @@
 
 ---
 
-*Las referencias Tier 1 fijan el fundamento del tema: la documentación oficial de las dos plataformas dominantes (Android/AOSP y Apple), las especificaciones de estándares abiertos implicadas (W3C para PWA y accesibilidad, IETF para HTTP/TLS/OAuth, Ecma para JavaScript), el catálogo de seguridad móvil de OWASP y el modelo de calidad ISO/IEC 25010 que estructura la comparativa. Tier 2 documenta frameworks y servicios concretos citados como ejemplo (Cordova/Ionic, React Native, Flutter, FCM/APNs, tiendas) sin que el tema dependa de ninguno en particular. Tier 3 enmarca la normativa de accesibilidad, seguridad y protección de datos que condiciona el desarrollo de una aplicación móvil del Ayuntamiento de Madrid.*
+*Las referencias Tier 1 fijan el fundamento del tema: la documentación oficial de las dos plataformas dominantes (Android/AOSP y Apple), las especificaciones de estándares abiertos implicadas (W3C para PWA y accesibilidad, IETF para HTTP/TLS/OAuth, Ecma para JavaScript), el catálogo de seguridad móvil de OWASP y el modelo de calidad ISO/IEC 25010:2023 que estructura la comparativa. Tier 2 documenta frameworks y servicios concretos citados como ejemplo (Cordova/Ionic, React Native, Flutter, FCM/APNs, tiendas) sin que el tema dependa de ninguno en particular. Tier 3 enmarca la normativa de accesibilidad, seguridad y protección de datos que condiciona el desarrollo de una aplicación móvil del Ayuntamiento de Madrid.*

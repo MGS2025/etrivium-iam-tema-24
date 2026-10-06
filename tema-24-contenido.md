@@ -16,13 +16,13 @@
 
 Este tema incluye cuatro tipos de **cajas callout** para facilitar el estudio:
 
-> **[DATO CLAVE EXAMEN]** Información de alta densidad memorística, con alta probabilidad de aparecer en el test oficial.
+> **[DATO CLAVE]** Información de alta densidad memorística.
 
 > **[EJERCICIO RESUELTO]** Problema + solución paso a paso (identificación de una tecnología, elección arquitectónica razonada).
 
-> **[EJEMPLO AYTO MADRID]** Aplicación real de la teoría al entorno municipal (avisos ciudadanos, sede electrónica, trámites).
+> **[EJEMPLO DE APLICACIÓN EN EL AYTO]** Aplicación real de la teoría al entorno municipal (avisos ciudadanos, sede electrónica, trámites).
 
-> **[REFERENCIA CRUZADA]** Enlace conceptual a otros temas del temario oficial.
+> **[RELACIÓN CON OTROS TEMAS]** Enlace conceptual a otros temas del temario oficial.
 
 Los ejemplos de **código** se escriben en **Kotlin, Swift, Dart y JavaScript reales** (no en pseudocódigo neutro), porque este tema trata precisamente de comparar esas plataformas concretas: un pseudocódigo agnóstico impediría apreciar las diferencias entre ellas, que es justo el objeto del tema (mismo criterio que el Tema 21 con Java/Jakarta y el Tema 23 con HTML/JS/PHP). Los fragmentos son deliberadamente breves e ilustrativos, no aplicaciones completas. Las fuentes se citan con etiquetas breves tipo `[ANDROID-DEV]` o `[FLUTTER-DOC]`; el registro completo está en `tema-24-fuentes.md`.
 
@@ -45,14 +45,14 @@ Su evolución puede resumirse en cuatro etapas:
 | **Era de las tiendas y los ecosistemas** | 2008-2015 | Lanzamiento de la App Store (2008) y de Android Market/Google Play (2008); el modelo pasa a ser *SDK oficial + tienda centralizada + revisión*. Nace el desarrollo móvil tal como se entiende hoy. |
 | **Convergencia y multiplataforma** | 2015-presente | Duopolio **Android/iOS**; maduración de los enfoques multiplataforma (React Native 2015, Flutter 2018), de las PWA y de los lenguajes modernos de plataforma (Swift 2014, Kotlin oficial en Android 2017 y preferente desde 2019). |
 
-> **[DATO CLAVE EXAMEN]** El ecosistema móvil actual es un **duopolio de facto**: **Android** (Google/AOSP, licencia libre, múltiples fabricantes, alta fragmentación de dispositivos y versiones) e **iOS** (Apple, ecosistema cerrado, hardware propio, baja fragmentación). Toda la disciplina de desarrollo móvil se articula sobre esa dualidad [ANDROID-ARCH] [APPLE-ARCH].
+> **[DATO CLAVE]** El ecosistema móvil actual es un **duopolio de facto**: **Android** (Google/AOSP, licencia libre, múltiples fabricantes, alta fragmentación de dispositivos y versiones) e **iOS** (Apple, ecosistema cerrado, hardware propio, baja fragmentación). Toda la disciplina de desarrollo móvil se articula sobre esa dualidad [ANDROID-ARCH] [APPLE-ARCH].
 
 La diferencia estructural entre ambas plataformas condiciona todo el tema:
 
 - **Android** es un sistema **abierto** (AOSP) que fabricantes distintos adaptan a hardware muy diverso: la consecuencia es la **fragmentación** —cientos de combinaciones de tamaño de pantalla, densidad, versión del sistema y capa del fabricante— que el desarrollador debe absorber mediante recursos alternativos, comprobaciones de versión y bibliotecas de compatibilidad [ANDROID-DEV].
 - **iOS** es un sistema **cerrado y verticalmente integrado**: Apple controla hardware, sistema operativo, lenguaje, herramienta de desarrollo (Xcode) y canal de distribución. El resultado es un catálogo de dispositivos reducido y una adopción de versiones muy rápida, a costa de una **libertad menor** (solo se puede desarrollar con Xcode sobre macOS, y toda app pasa por revisión de Apple) [APPLE-DEV] [APPSTORE-REVIEW].
 
-> **[REFERENCIA CRUZADA]** Los **sistemas operativos para dispositivos móviles** como tales (arquitectura de Android e iOS en cuanto sistemas, gestión de procesos y memoria) se desarrollan en el **Tema 14**. Este tema los aborda solo como **plataformas de desarrollo**: qué SDK, qué modelo de aplicación y qué ciclo de vida ofrecen al programador.
+> **[RELACIÓN CON OTROS TEMAS]** Los **sistemas operativos para dispositivos móviles** como tales (arquitectura de Android e iOS en cuanto sistemas, gestión de procesos y memoria) se desarrollan en el **Tema 14**. Este tema los aborda solo como **plataformas de desarrollo**: qué SDK, qué modelo de aplicación y qué ciclo de vida ofrecen al programador.
 
 #### 1.1.1. Tipos de dispositivos y capacidades hardware
 
@@ -75,9 +75,9 @@ El elemento diferenciador respecto a un equipo de escritorio no es solo el tama�
 - **Sensores biométricos** (huella dactilar, reconocimiento facial) usados para autenticación local.
 - **Micrófono y altavoz**, **conectividad móvil y Wi-Fi**.
 
-> **[EJEMPLO AYTO MADRID]** La app de avisos ciudadanos necesita **cámara** (fotografía de la incidencia), **GPS** (localizar el aviso sin que el vecino escriba una dirección), **red** (envío al servidor) y **notificaciones**. Cada uno de estos accesos requiere solicitar un **permiso en tiempo de ejecución** y justificar su finalidad, tanto por exigencia de las plataformas como por el principio de **minimización de datos** del RGPD [RGPD] [ANDROID-DEV].
+> **[EJEMPLO DE APLICACIÓN EN EL AYTO]** La app de avisos ciudadanos necesita **cámara** (fotografía de la incidencia), **GPS** (localizar el aviso sin que el vecino escriba una dirección), **red** (envío al servidor) y **notificaciones**. Cada uno de estos accesos requiere solicitar un **permiso en tiempo de ejecución** y justificar su finalidad, tanto por exigencia de las plataformas como por el principio de **minimización de datos** del RGPD [RGPD] [ANDROID-DEV].
 
-> **[DATO CLAVE EXAMEN]** Desde Android 6.0 (API 23) y en todas las versiones modernas de iOS, los permisos sensibles (cámara, localización, micrófono, contactos) se conceden **en tiempo de ejecución**, no en la instalación, y el usuario **puede revocarlos en cualquier momento**. La aplicación debe funcionar de forma degradada, sin fallar, cuando un permiso es denegado [ANDROID-DEV] [APPLE-DEV].
+> **[DATO CLAVE]** Desde Android 6.0 (API 23) y en todas las versiones modernas de iOS, los permisos sensibles (cámara, localización, micrófono, contactos) se conceden **en tiempo de ejecución**, no en la instalación, y el usuario **puede revocarlos en cualquier momento**. La aplicación debe funcionar de forma degradada, sin fallar, cuando un permiso es denegado [ANDROID-DEV] [APPLE-DEV].
 
 #### 1.1.2. Limitaciones de recursos: batería, memoria y procesamiento
 
@@ -89,13 +89,13 @@ Un dispositivo móvil es un sistema con **recursos escasos y compartidos** cuyo 
 
 **3. Procesamiento y almacenamiento.** Los SoC móviles equilibran rendimiento y consumo (arquitecturas con núcleos de alta eficiencia y de alto rendimiento), y el almacenamiento es finito y compartido con fotos, vídeos y otras apps. Los cálculos intensivos y la E/S deben ejecutarse **fuera del hilo principal** (§2.1.1) y, cuando sea posible, delegarse en el servidor.
 
-> **[DATO CLAVE EXAMEN]** Tres limitaciones y su consecuencia inmediata: **batería** → agrupar transferencias y diferir el trabajo no urgente; **memoria** → la app puede ser **destruida por el sistema** en segundo plano y debe poder restaurar su estado; **procesamiento** → toda operación larga fuera del hilo principal, para no provocar un **ANR** en Android ni congelar la interfaz en iOS [ANDROID-DEV] [APPLE-DEV].
+> **[DATO CLAVE]** Tres limitaciones y su consecuencia inmediata: **batería** → agrupar transferencias y diferir el trabajo no urgente; **memoria** → la app puede ser **destruida por el sistema** en segundo plano y debe poder restaurar su estado; **procesamiento** → toda operación larga fuera del hilo principal, para no provocar un **ANR** en Android ni congelar la interfaz en iOS [ANDROID-DEV] [APPLE-DEV].
 
-> **[REFERENCIA CRUZADA]** La **arquitectura de los ordenadores y sus componentes internos** se estudia en el **Tema 11**, y los **periféricos y elementos de almacenamiento** en el **Tema 12**; aquí solo interesa cómo esas limitaciones físicas condicionan las decisiones de diseño de una aplicación móvil.
+> **[RELACIÓN CON OTROS TEMAS]** La **arquitectura de los ordenadores y sus componentes internos** se estudia en el **Tema 11**, y los **periféricos y elementos de almacenamiento** en el **Tema 12**; aquí solo interesa cómo esas limitaciones físicas condicionan las decisiones de diseño de una aplicación móvil.
 
 ### 1.2. Estrategias y paradigmas de desarrollo
 
-Ante la necesidad de estar presente en dos plataformas incompatibles entre sí, existen **cuatro estrategias** de desarrollo. Distinguirlas con precisión es el núcleo conceptual de este tema y la fuente más habitual de preguntas de examen.
+Ante la necesidad de estar presente en dos plataformas incompatibles entre sí, existen **cuatro estrategias** de desarrollo. Distinguirlas con precisión es el núcleo conceptual de este tema.
 
 | Estrategia | Lenguaje / tecnología | Cómo se dibuja la interfaz | Distribución |
 |---|---|---|---|
@@ -104,7 +104,7 @@ Ante la necesidad de estar presente en dos plataformas incompatibles entre sí, 
 | **Multiplataforma compilada** | JavaScript/TypeScript (React Native), Dart (Flutter), C# (.NET MAUI), Kotlin (KMP) | Componentes nativos (React Native) o motor gráfico propio (Flutter) | Tiendas |
 | **PWA** | HTML, CSS, JavaScript | Navegador del sistema | **Web** (instalable desde el navegador) |
 
-> **[DATO CLAVE EXAMEN]** La frontera decisiva **no** es «usa o no usa tecnologías web», sino **cómo se dibuja la interfaz**: con **componentes nativos** (nativo puro y React Native), con un **WebView** (híbrido de contenedor web y PWA) o con un **motor gráfico propio que pinta cada píxel** (Flutter). Esa diferencia explica casi todas las consecuencias de rendimiento y de aspecto visual [RN-DOC] [FLUTTER-DOC] [CORDOVA-DOC].
+> **[DATO CLAVE]** La frontera decisiva **no** es «usa o no usa tecnologías web», sino **cómo se dibuja la interfaz**: con **componentes nativos** (nativo puro y React Native), con un **WebView** (híbrido de contenedor web y PWA) o con un **motor gráfico propio que pinta cada píxel** (Flutter). Esa diferencia explica casi todas las consecuencias de rendimiento y de aspecto visual [RN-DOC] [FLUTTER-DOC] [CORDOVA-DOC].
 
 #### 1.2.1. Enfoque nativo
 
@@ -125,13 +125,13 @@ Inconvenientes:
 
 #### 1.2.2. Enfoque híbrido y multiplataforma
 
-Bajo el rótulo «híbrido» se agrupan, en sentido amplio, todas las soluciones que permiten **una sola base de código para varias plataformas**. Conviene, sin embargo, separar dos familias que funcionan de forma radicalmente distinta y que el examen suele confundir a propósito:
+Bajo el rótulo «híbrido» se agrupan, en sentido amplio, todas las soluciones que permiten **una sola base de código para varias plataformas**. Conviene, sin embargo, separar dos familias que funcionan de forma radicalmente distinta y que conviene no confundir:
 
 **a) Híbrido de contenedor web** (Apache Cordova, Ionic, Capacitor). La aplicación es, en realidad, una **aplicación web** (HTML/CSS/JS) empaquetada dentro de una aplicación nativa mínima cuyo único contenido es un **WebView** a pantalla completa. El acceso al hardware se consigue mediante **plugins**: piezas nativas que exponen una función JavaScript al código web a través de un **puente** (§4.1.1) [CORDOVA-DOC].
 
 **b) Multiplataforma compilada o de renderizado nativo** (React Native, Flutter, .NET MAUI, Kotlin Multiplatform). No hay WebView. El código escrito una vez se traduce en **interfaz nativa real** —React Native instancia componentes nativos del sistema desde JavaScript [RN-DOC]— o se **pinta directamente sobre un lienzo** mediante un motor gráfico propio compilado a código máquina —Flutter con Skia/Impeller [FLUTTER-DOC]—.
 
-> **[DATO CLAVE EXAMEN]** **«Híbrido» ≠ «multiplataforma»** en sentido estricto. El *híbrido clásico* (Cordova/Ionic) ejecuta **HTML dentro de un WebView**; React Native y Flutter **no usan WebView**: el primero maneja componentes nativos desde JavaScript, y el segundo dibuja su propia interfaz con un motor gráfico. Confundirlos es el error más frecuente en este tema [CORDOVA-DOC] [RN-DOC] [FLUTTER-DOC].
+> **[DATO CLAVE]** **«Híbrido» ≠ «multiplataforma»** en sentido estricto. El *híbrido clásico* (Cordova/Ionic) ejecuta **HTML dentro de un WebView**; React Native y Flutter **no usan WebView**: el primero maneja componentes nativos desde JavaScript, y el segundo dibuja su propia interfaz con un motor gráfico. Confundirlos es el error más frecuente en este tema [CORDOVA-DOC] [RN-DOC] [FLUTTER-DOC].
 
 Ventajas comunes a todo el grupo: **una sola base de código**, un equipo, coste y plazo menores, y coherencia funcional automática entre plataformas. Inconvenientes comunes: **dependencia de un tercero** (si el framework abandona el proyecto o tarda en soportar una versión nueva del sistema, el proyecto queda expuesto), **retraso en el acceso a API novedosas**, un cierto sobrecoste de rendimiento y de tamaño del paquete, y la necesidad de escribir **código nativo específico** para las funcionalidades que el framework no cubre.
 
@@ -160,9 +160,9 @@ Requisitos y límites de una PWA:
 - **No pasa por las tiendas**: se instala desde el propio navegador, lo que elimina la revisión y los plazos de publicación, pero también la visibilidad del catálogo de la tienda.
 - El **acceso al hardware es limitado** y depende del navegador: cámara y geolocalización sí, pero sensores avanzados, NFC o integración profunda con el sistema, no o solo parcialmente. En **iOS** las restricciones son históricamente mayores que en Android (soporte más tardío y limitado de notificaciones push web, cuotas de almacenamiento más estrictas).
 
-> **[DATO CLAVE EXAMEN]** Las dos piezas que convierten una web en **PWA** son el **Service Worker** (funcionamiento offline, interceptación de red, push) y el **Web App Manifest** (instalación en la pantalla de inicio). Ambas exigen **HTTPS** [SERVICE-WORKERS] [WEB-APP-MANIFEST].
+> **[DATO CLAVE]** Las dos piezas que convierten una web en **PWA** son el **Service Worker** (funcionamiento offline, interceptación de red, push) y el **Web App Manifest** (instalación en la pantalla de inicio). Ambas exigen **HTTPS** [SERVICE-WORKERS] [WEB-APP-MANIFEST].
 
-> **[REFERENCIA CRUZADA]** El desarrollo web en sí —HTML, CSS, JavaScript, front-end y back-end, y las PWA como capa de la web— corresponde al **Tema 23**. Aquí las PWA se tratan únicamente como **una de las cuatro estrategias** para llegar al dispositivo móvil, comparándolas con las otras tres.
+> **[RELACIÓN CON OTROS TEMAS]** El desarrollo web en sí —HTML, CSS, JavaScript, front-end y back-end, y las PWA como capa de la web— corresponde al **Tema 23**. Aquí las PWA se tratan únicamente como **una de las cuatro estrategias** para llegar al dispositivo móvil, comparándolas con las otras tres.
 
 > **[EJERCICIO RESUELTO]** *Problema*: el Ayuntamiento quiere que los ciudadanos consulten el **estado de un expediente** desde el móvil. La funcionalidad es de solo lectura, no necesita cámara ni sensores, y se desea publicarla en dos semanas sin depender de la revisión de dos tiendas. ¿Qué estrategia procede? *Solución*: una **PWA**. No requiere hardware más allá de la red, la distribución es inmediata y sin revisión, se actualiza publicando en el servidor (sin esperar a que el usuario actualice) y una sola base de código sirve a Android, iOS y escritorio. Si más adelante se exigiera lectura de NFC del DNI o notificaciones push fiables en iOS, la decisión debería revisarse hacia un enfoque nativo o multiplataforma compilado.
 
@@ -176,7 +176,7 @@ Independientemente del enfoque elegido, toda aplicación móvil se enfrenta a lo
 
 La diferencia conceptual más importante frente al desarrollo de escritorio es que, en móvil, **el programa no es dueño de su propia ejecución**. Una aplicación de escritorio arranca en `main()`, se ejecuta hasta que el usuario la cierra y termina. Una aplicación móvil, en cambio, es **interrumpida constantemente** por llamadas entrantes, notificaciones, cambios de orientación, bloqueo de pantalla o simple cambio a otra app, y puede ser **finalizada por el sistema** sin previo aviso para recuperar memoria [ANDROID-LIFECYCLE] [APPLE-DEV].
 
-> **[DATO CLAVE EXAMEN]** En móvil, **el sistema operativo decide** cuándo la aplicación se detiene o se destruye; el programador solo **reacciona** a esa decisión implementando los métodos de ciclo de vida. La regla práctica es: **guardar el estado cuando se pierde el primer plano**, no cuando se destruye la app, porque puede no haber aviso de destrucción [ANDROID-LIFECYCLE].
+> **[DATO CLAVE]** En móvil, **el sistema operativo decide** cuándo la aplicación se detiene o se destruye; el programador solo **reacciona** a esa decisión implementando los métodos de ciclo de vida. La regla práctica es: **guardar el estado cuando se pierde el primer plano**, no cuando se destruye la app, porque puede no haber aviso de destrucción [ANDROID-LIFECYCLE].
 
 #### 2.1.1. Estados de ejecución y gestión de eventos
 
@@ -215,7 +215,7 @@ class AvisoActivity : AppCompatActivity() {
 
 Un caso característico de Android son los **cambios de configuración** (girar el dispositivo, cambiar el idioma o el tamaño de fuente, desplegar un dispositivo plegable): por defecto **destruyen y recrean la Activity**. El estado transitorio se conserva con `onSaveInstanceState()`, que guarda un `Bundle` de datos ligeros; el estado más amplio se conserva hoy en un `ViewModel`, que sobrevive a la recreación [JETPACK].
 
-> **[DATO CLAVE EXAMEN]** En Android, **girar la pantalla destruye y recrea la Activity** por defecto. Si el estado no se guarda en `onSaveInstanceState()` (o en un `ViewModel`), **se pierde lo que el usuario había escrito**. Es la causa clásica del error «al girar el móvil se borra el formulario» [ANDROID-LIFECYCLE] [JETPACK].
+> **[DATO CLAVE]** En Android, **girar la pantalla destruye y recrea la Activity** por defecto. Si el estado no se guarda en `onSaveInstanceState()` (o en un `ViewModel`), **se pierde lo que el usuario había escrito**. Es la causa clásica del error «al girar el móvil se borra el formulario» [ANDROID-LIFECYCLE] [JETPACK].
 
 **iOS — ciclo de vida de la app y del `UIViewController`.** iOS distingue el ciclo de vida de **la aplicación** (estados *Not running*, *Inactive*, *Active*, *Background*, *Suspended*) del ciclo de vida de **cada controlador de vista** [APPLE-DEV]:
 
@@ -247,7 +247,7 @@ final class AvisoViewController: UIViewController {
 }
 ```
 
-> **[DATO CLAVE EXAMEN]** El estado **Suspended** de iOS significa «la app está en memoria pero **no ejecuta ni una línea de código**». Desde ahí el sistema puede terminarla en silencio: es el motivo por el que el estado debe persistirse **al pasar a segundo plano**, y no confiar en un evento de cierre [APPLE-DEV].
+> **[DATO CLAVE]** El estado **Suspended** de iOS significa «la app está en memoria pero **no ejecuta ni una línea de código**». Desde ahí el sistema puede terminarla en silencio: es el motivo por el que el estado debe persistirse **al pasar a segundo plano**, y no confiar en un evento de cierre [APPLE-DEV].
 
 **Concurrencia y hilo principal.** Ambas plataformas imponen la misma regla: **la interfaz solo puede manipularse desde el hilo principal**, y ese hilo **nunca debe bloquearse**. Si en Android el hilo principal permanece bloqueado unos segundos, el sistema muestra el diálogo **ANR** (*Application Not Responding*); en iOS la aplicación aparece congelada y el *watchdog* del sistema puede matarla [ANDROID-DEV] [APPLE-DEV]. Las herramientas modernas para respetar esta regla son las **corrutinas** de Kotlin (`suspend`, `Dispatchers.IO`) y el modelo `async/await` de Swift.
 
@@ -284,11 +284,11 @@ interface AvisoDao {
 }
 ```
 
-> **[DATO CLAVE EXAMEN]** **Nunca** se almacenan credenciales, tokens ni datos personales sensibles en `SharedPreferences`/`UserDefaults` ni en ficheros en claro: van al **Keystore** (Android) o al **Keychain** (iOS). «Almacenamiento inseguro de datos» es uno de los riesgos históricos del **OWASP Mobile Top 10** [OWASP-MOBILE] [OWASP-MASVS].
+> **[DATO CLAVE]** **Nunca** se almacenan credenciales, tokens ni datos personales sensibles en `SharedPreferences`/`UserDefaults` ni en ficheros en claro: van al **Keystore** (Android) o al **Keychain** (iOS). «Almacenamiento inseguro de datos» es uno de los riesgos históricos del **OWASP Mobile Top 10** [OWASP-MOBILE] [OWASP-MASVS].
 
 Cada aplicación vive además en un ***sandbox***: un espacio de almacenamiento **privado y aislado** al que otras aplicaciones no acceden, y que se elimina al desinstalar la app. En Android, además, el acceso al almacenamiento compartido está mediado desde Android 10 por el **almacenamiento con ámbito** (*scoped storage*), que impide leer libremente ficheros de otras aplicaciones [ANDROID-DEV].
 
-> **[EJEMPLO AYTO MADRID]** En la app de avisos, el vecino puede redactar una incidencia en un sótano sin cobertura. La app **guarda el aviso en SQLite con `sincronizado = false`**, junto con la fotografía en el almacenamiento privado, y programa un trabajo diferido (`WorkManager`) que lo enviará en cuanto haya red. El ciudadano percibe que la app «siempre funciona»; en realidad, la persistencia local está absorbiendo la falta de conectividad.
+> **[EJEMPLO DE APLICACIÓN EN EL AYTO]** En la app de avisos, el vecino puede redactar una incidencia en un sótano sin cobertura. La app **guarda el aviso en SQLite con `sincronizado = false`**, junto con la fotografía en el almacenamiento privado, y programa un trabajo diferido (`WorkManager`) que lo enviará en cuanto haya red. El ciudadano percibe que la app «siempre funciona»; en realidad, la persistencia local está absorbiendo la falta de conectividad.
 
 ### 2.2. Interfaz y experiencia de usuario (UI/UX)
 
@@ -301,7 +301,7 @@ Cada aplicación vive además en un ***sandbox***: un espacio de almacenamiento 
 - **Recursos alternativos por calificador.** Android selecciona automáticamente el recurso adecuado según el directorio: `res/layout-sw600dp/` para pantallas de al menos 600 dp de ancho mínimo (tabletas), `res/values-es/` para castellano, `res/drawable-xxhdpi/` para densidades altas [ANDROID-UI].
 - **Puntos de ruptura**: por debajo de cierto ancho, una lista y su detalle se muestran como **dos pantallas sucesivas**; por encima, como **dos paneles simultáneos** (maestro-detalle).
 
-> **[DATO CLAVE EXAMEN]** **dp** = unidad de longitud independiente de la densidad (1 dp = 1 px a 160 ppp); **sp** = como dp pero **escalada además por la preferencia de tamaño de fuente del usuario**. Los textos se miden **siempre en sp**, no en dp, precisamente por accesibilidad [ANDROID-UI].
+> **[DATO CLAVE]** **dp** = unidad de longitud independiente de la densidad (1 dp = 1 px a 160 ppp); **sp** = como dp pero **escalada además por la preferencia de tamaño de fuente del usuario**. Los textos se miden **siempre en sp**, no en dp, precisamente por accesibilidad [ANDROID-UI].
 
 **Accesibilidad.** En una aplicación del sector público la accesibilidad **no es una buena práctica opcional, sino una obligación legal**: el **RD 1112/2018** extiende expresamente los requisitos de accesibilidad a las **aplicaciones para dispositivos móviles** del sector público, tomando como referencia técnica la norma **EN 301 549**, que a su vez incorpora las **WCAG 2.x en nivel AA** [RD1112-2018] [EN301549] [WCAG22]. Las obligaciones incluyen publicar una **declaración de accesibilidad** y ofrecer un mecanismo de comunicación y reclamación.
 
@@ -313,9 +313,9 @@ En la práctica del desarrollo, esto se traduce en:
 - **Respetar el tamaño de fuente del sistema** (texto en sp / *Dynamic Type*), sin cortar el diseño cuando el usuario amplía la letra.
 - **Orden de foco lógico** para navegación con teclado externo o *switch control*.
 
-> **[EJEMPLO AYTO MADRID]** En la app de avisos, el botón de la cámara es un simple icono. Sin `contentDescription="Adjuntar fotografía de la incidencia"`, TalkBack lo lee como «botón» y la funcionalidad resulta inutilizable para un vecino ciego, lo que además incumple el **RD 1112/2018**, aplicable a la app municipal por ser del sector público.
+> **[EJEMPLO DE APLICACIÓN EN EL AYTO]** En la app de avisos, el botón de la cámara es un simple icono. Sin `contentDescription="Adjuntar fotografía de la incidencia"`, TalkBack lo lee como «botón» y la funcionalidad resulta inutilizable para un vecino ciego, lo que además incumple el **RD 1112/2018**, aplicable a la app municipal por ser del sector público.
 
-> **[REFERENCIA CRUZADA]** La **accesibilidad, el diseño universal y la usabilidad** como disciplinas completas, junto con los conceptos de seguridad en el desarrollo, corresponden al **Tema 25**. Este tema recoge solo su traducción concreta a la interfaz de una aplicación móvil.
+> **[RELACIÓN CON OTROS TEMAS]** La **accesibilidad, el diseño universal y la usabilidad** como disciplinas completas, junto con los conceptos de seguridad en el desarrollo, corresponden al **Tema 25**. Este tema recoge solo su traducción concreta a la interfaz de una aplicación móvil.
 
 #### 2.2.2. Componentes gráficos y maquetación
 
@@ -353,7 +353,7 @@ struct ListaAvisos: View {
 }
 ```
 
-> **[DATO CLAVE EXAMEN]** **Jetpack Compose** (Android, Kotlin) y **SwiftUI** (iOS, Swift) son los frameworks **declarativos** actuales de cada plataforma; sustituyen respectivamente a los diseños XML con `View` y a UIKit con *storyboards*. Ambos siguen siendo **desarrollo nativo**: no son multiplataforma [ANDROID-UI] [SWIFTUI-DOC].
+> **[DATO CLAVE]** **Jetpack Compose** (Android, Kotlin) y **SwiftUI** (iOS, Swift) son los frameworks **declarativos** actuales de cada plataforma; sustituyen respectivamente a los diseños XML con `View` y a UIKit con *storyboards*. Ambos siguen siendo **desarrollo nativo**: no son multiplataforma [ANDROID-UI] [SWIFTUI-DOC].
 
 Sobre esos componentes se construyen unos **patrones de navegación** comunes a las dos plataformas, que el usuario ya conoce y que conviene respetar antes que inventar:
 
@@ -383,7 +383,7 @@ La aplicación móvil es, en la inmensa mayoría de los casos, un **cliente** de
 Reglas prácticas que todo cliente móvil debe cumplir:
 
 - **Nunca en el hilo principal**: la petición se ejecuta en un hilo secundario (corrutina con `Dispatchers.IO` en Kotlin, `async/await` en Swift) y solo el resultado vuelve al hilo de interfaz.
-- **HTTPS obligatorio con TLS actual**: ambas plataformas bloquean por defecto el tráfico en claro (*App Transport Security* en iOS; *cleartext traffic* deshabilitado desde Android 9) [RFC8446] [APPLE-DEV] [ANDROID-DEV].
+- **HTTPS obligatorio con TLS actual**: ambas plataformas bloquean por defecto el tráfico en claro (*App Transport Security* en iOS; *cleartext traffic* deshabilitado desde Android 9) [RFC9846] [APPLE-DEV] [ANDROID-DEV].
 - **Gestionar los tres finales posibles**: éxito, error del servidor (códigos 4xx/5xx) y **ausencia de red o tiempo de espera agotado**. Este tercer caso, marginal en escritorio, es **habitual** en móvil.
 - **Diseñar cargas útiles pequeñas**: paginar las listas, comprimir, no descargar imágenes a tamaño completo y aprovechar cachés y cabeceras condicionales (`ETag`, `If-None-Match`) para no repetir descargas [RFC9110].
 - **Autenticación segura**: el patrón recomendado es **OAuth 2.0 con PKCE**, abriendo el navegador del sistema en lugar de un WebView embebido, precisamente para que la app nunca vea las credenciales del usuario [RFC8252] [RFC7636].
@@ -401,9 +401,9 @@ suspend fun enviarAviso(aviso: Aviso): Resultado = withContext(Dispatchers.IO) {
 }
 ```
 
-> **[DATO CLAVE EXAMEN]** Para autenticar una app móvil contra un servicio corporativo, la buena práctica normativa (**RFC 8252**, BCP 212) es **usar el navegador del sistema y el flujo de código de autorización con PKCE**, **no** un WebView embebido: el WebView permitiría a la app leer las credenciales del usuario y rompe el aislamiento de sesión [RFC8252] [RFC7636].
+> **[DATO CLAVE]** Para autenticar una app móvil contra un servicio corporativo, la buena práctica normativa (**RFC 8252**, BCP 212) es **usar el navegador del sistema y el flujo de código de autorización con PKCE**, **no** un WebView embebido: el WebView permitiría a la app leer las credenciales del usuario y rompe el aislamiento de sesión [RFC8252] [RFC7636].
 
-> **[REFERENCIA CRUZADA]** Las **arquitecturas cliente/servidor multicapa y los servicios web** (REST, SOAP, WSDL) se desarrollan en el **Tema 22**; los protocolos **HTTP, HTTPS y TLS** en detalle, en el **Tema 35**; el modelo **TCP/IP**, en el **Tema 34**. Aquí interesa exclusivamente el papel del móvil como **cliente** de esos servicios y las restricciones que le impone la red inalámbrica.
+> **[RELACIÓN CON OTROS TEMAS]** Las **arquitecturas cliente/servidor multicapa y los servicios web** (REST, SOAP, WSDL) se desarrollan en el **Tema 22**; los protocolos **HTTP, HTTPS y TLS** en detalle, en el **Tema 35**; el modelo **TCP/IP**, en el **Tema 34**. Aquí interesa exclusivamente el papel del móvil como **cliente** de esos servicios y las restricciones que le impone la red inalámbrica.
 
 #### 2.3.2. Notificaciones push y sincronización de datos
 
@@ -419,7 +419,7 @@ suspend fun enviarAviso(aviso: Aviso): Resultado = withContext(Dispatchers.IO) {
 | Android | **FCM** (*Firebase Cloud Messaging*) | Sustituyó a GCM; puede transportar notificaciones visibles o mensajes de datos |
 | iOS | **APNs** (*Apple Push Notification service*) | Vía obligatoria; requiere clave/certificado emitido por Apple |
 
-> **[DATO CLAVE EXAMEN]** El servidor de la aplicación **nunca** entrega la notificación directamente al dispositivo: la envía a **FCM** (Android) o **APNs** (iOS), que son quienes la entregan usando el **token de registro** del dispositivo. Además, en las versiones modernas de ambos sistemas el usuario debe **autorizar expresamente** las notificaciones, y puede revocarlas [FCM] [APNS].
+> **[DATO CLAVE]** El servidor de la aplicación **nunca** entrega la notificación directamente al dispositivo: la envía a **FCM** (Android) o **APNs** (iOS), que son quienes la entregan usando el **token de registro** del dispositivo. Además, en las versiones modernas de ambos sistemas el usuario debe **autorizar expresamente** las notificaciones, y puede revocarlas [FCM] [APNS].
 
 Conviene no confundir la notificación push con la **notificación local**: esta última la programa **la propia aplicación** en el dispositivo, sin intervención de ningún servidor ni de la red (por ejemplo, «recuérdame mañana que revise el aviso»). Ambas se muestran igual al usuario, pero su origen y sus requisitos técnicos son distintos. Existe además el **mensaje de datos silencioso**, que despierta la app en segundo plano para que sincronice sin mostrar nada al usuario; ambos sistemas lo limitan estrictamente en frecuencia para proteger la batería [FCM] [APNS].
 
@@ -459,14 +459,14 @@ Android es una **pila de software de código abierto** (AOSP) organizada en capa
 | ***Java API Framework*** | Servicios del sistema y API que usa el programador: `ActivityManager`, `PackageManager`, gestor de vistas, proveedores de contenido, gestor de notificaciones |
 | **Aplicaciones** | Apps del sistema y de terceros, todas sobre la misma API |
 
-El **entorno de ejecución** merece atención propia porque es una pregunta clásica:
+El **entorno de ejecución** merece atención propia:
 
 - El código Kotlin/Java se compila a **bytecode** y este se transforma al formato **DEX** (*Dalvik Executable*), optimizado para dispositivos con poca memoria.
 - Hasta Android 4.4, ese DEX lo ejecutaba la máquina virtual **Dalvik**, con compilación **JIT** (*Just-In-Time*, en tiempo de ejecución).
 - Desde Android 5.0, el entorno es **ART** (*Android Runtime*), que combina compilación **AOT** (*Ahead-Of-Time*, en la instalación), **JIT** y **perfiles de uso** para compilar de forma selectiva lo que más se ejecuta. ART aporta además una recolección de basura mejorada y mejor depuración [ANDROID-ARCH].
 - Cada aplicación se ejecuta en **su propio proceso**, con **su propia instancia de ART** y bajo un **identificador de usuario Linux propio**: ese es el fundamento técnico del *sandbox* de Android.
 
-> **[DATO CLAVE EXAMEN]** **Dalvik → ART**: Dalvik (hasta Android 4.4) compilaba **JIT** en cada ejecución; **ART** (desde Android 5.0) usa **AOT en la instalación combinado con JIT y perfiles**. El formato de bytecode es **DEX** en ambos casos. El aislamiento entre apps se apoya en que **cada aplicación es un usuario distinto del kernel Linux** [ANDROID-ARCH].
+> **[DATO CLAVE]** **Dalvik → ART**: Dalvik (hasta Android 4.4) compilaba **JIT** en cada ejecución; **ART** (desde Android 5.0) usa **AOT en la instalación combinado con JIT y perfiles**. El formato de bytecode es **DEX** en ambos casos. El aislamiento entre apps se apoya en que **cada aplicación es un usuario distinto del kernel Linux** [ANDROID-ARCH].
 
 #### 3.1.2. Componentes fundamentales de la aplicación
 
@@ -511,9 +511,9 @@ El **manifiesto** (`AndroidManifest.xml`) es la declaración formal de la aplica
 </manifest>
 ```
 
-> **[DATO CLAVE EXAMEN]** Los **cuatro componentes** de una aplicación Android son **Activity, Service, Broadcast Receiver y Content Provider**, y todos se declaran en el **AndroidManifest.xml**. Se activan mediante **Intents**, que pueden ser **explícitos** (clase destino concreta) o **implícitos** (acción + datos, resueltos por el sistema) [ANDROID-DEV].
+> **[DATO CLAVE]** Los **cuatro componentes** de una aplicación Android son **Activity, Service, Broadcast Receiver y Content Provider**, y todos se declaran en el **AndroidManifest.xml**. Se activan mediante **Intents**, que pueden ser **explícitos** (clase destino concreta) o **implícitos** (acción + datos, resueltos por el sistema) [ANDROID-DEV].
 
-**El modelo de permisos de Android** merece detalle propio, porque es materia recurrente. Los permisos se declaran en el manifiesto y el sistema los clasifica en [ANDROID-DEV]:
+**El modelo de permisos de Android** merece detalle propio. Los permisos se declaran en el manifiesto y el sistema los clasifica en [ANDROID-DEV]:
 
 - **Normales**: bajo riesgo (acceso a Internet, vibración, estado de la red). El sistema los concede automáticamente en la instalación; el usuario no interviene.
 - **Peligrosos**: afectan a datos personales o a capacidades sensibles (cámara, localización, micrófono, contactos, almacenamiento). Deben solicitarse **en tiempo de ejecución**, agrupados por categoría, y el usuario puede conceder acceso permanente, **solo mientras se usa la app** o **solo esta vez**, y revocarlo después.
@@ -536,7 +536,7 @@ En cuanto a herramientas, el entorno oficial es **Android Studio** (basado en In
 
 Android nació con **Java** como lenguaje de aplicación, sobre el bytecode de la máquina virtual Dalvik. Desde 2017 **Kotlin** es lenguaje oficial y, desde 2019, **preferente** (*Kotlin-first*): la documentación, las bibliotecas Jetpack y las nuevas API se diseñan primero para Kotlin [ANDROID-DEV] [KOTLIN-DOC].
 
-Kotlin es un lenguaje de JetBrains que compila al mismo bytecode y es **100 % interoperable con Java** —pueden convivir en el mismo proyecto, e incluso en el mismo módulo—. Sus rasgos diferenciales para el examen:
+Kotlin es un lenguaje de JetBrains que compila al mismo bytecode y es **100 % interoperable con Java** —pueden convivir en el mismo proyecto, e incluso en el mismo módulo—. Sus rasgos diferenciales:
 
 | Rasgo de Kotlin | Qué aporta |
 |---|---|
@@ -553,9 +553,9 @@ val texto = direccion ?: "Ubicación no disponible" // operador Elvis: valor por
 val longitud = direccion?.length                   // llamada segura: null si direccion es null
 ```
 
-> **[DATO CLAVE EXAMEN]** **Kotlin** es el lenguaje **preferente** de Android desde 2019 (oficial desde 2017); **Java** sigue plenamente soportado y ambos son **interoperables** porque compilan al mismo bytecode. La aportación más citada de Kotlin es la **seguridad frente a nulos** en el sistema de tipos, seguida de las **corrutinas** para concurrencia [KOTLIN-DOC] [ANDROID-DEV].
+> **[DATO CLAVE]** **Kotlin** es el lenguaje **preferente** de Android desde 2019 (oficial desde 2017); **Java** sigue plenamente soportado y ambos son **interoperables** porque compilan al mismo bytecode. La aportación más citada de Kotlin es la **seguridad frente a nulos** en el sistema de tipos, seguida de las **corrutinas** para concurrencia [KOTLIN-DOC] [ANDROID-DEV].
 
-> **[REFERENCIA CRUZADA]** Los conceptos generales de **lenguajes de programación** (tipos, operadores, bucles, funciones) corresponden al **Tema 18**; la **programación orientada a objetos, la herencia, la sobrecarga y los patrones de diseño**, al **Tema 20**; la plataforma **Java EE / Jakarta EE** del lado servidor, al **Tema 21**. Aquí solo se comparan los lenguajes en cuanto **lenguajes de plataforma móvil**.
+> **[RELACIÓN CON OTROS TEMAS]** Los conceptos generales de **lenguajes de programación** (tipos, operadores, bucles, funciones) corresponden al **Tema 18**; la **programación orientada a objetos, la herencia, la sobrecarga y los patrones de diseño**, al **Tema 20**; la plataforma **Java EE / Jakarta EE** del lado servidor, al **Tema 21**. Aquí solo se comparan los lenguajes en cuanto **lenguajes de plataforma móvil**.
 
 ### 3.2. Plataforma iOS
 
@@ -570,7 +570,7 @@ iOS es el sistema operativo de los dispositivos móviles de Apple. Comparte núc
 | **Media** | Gráficos, audio y vídeo: Core Graphics, Core Animation, Metal, AVFoundation |
 | **Cocoa Touch** | Capa superior: **UIKit** y **SwiftUI**, gestión de eventos táctiles, multitarea, notificaciones, cámara, MapKit. Es la capa con la que el programador construye la interfaz |
 
-> **[DATO CLAVE EXAMEN]** Las cuatro capas de iOS de abajo arriba son **Core OS → Core Services → Media → Cocoa Touch**. **Cocoa Touch** es la capa **superior**, donde vive **UIKit** (y hoy también SwiftUI): es la adaptación táctil del entorno Cocoa de macOS [APPLE-ARCH].
+> **[DATO CLAVE]** Las cuatro capas de iOS de abajo arriba son **Core OS → Core Services → Media → Cocoa Touch**. **Cocoa Touch** es la capa **superior**, donde vive **UIKit** (y hoy también SwiftUI): es la adaptación táctil del entorno Cocoa de macOS [APPLE-ARCH].
 
 Como en Android, cada app se ejecuta en un ***sandbox*** con su propio sistema de ficheros aislado, y el acceso a recursos sensibles requiere permiso explícito del usuario, además de una **cadena de descripción de uso** obligatoria en el fichero `Info.plist` que explique por qué se pide (si falta, la app se rechaza en la revisión) [APPLE-DEV] [APPSTORE-REVIEW].
 
@@ -589,7 +589,7 @@ La estructura de una app iOS clásica con UIKit gira en torno a estas piezas [AP
 
 El patrón arquitectónico tradicional de UIKit es **MVC** (*Model-View-Controller*), con el `UIViewController` como controlador; en proyectos modernos son frecuentes variantes como MVVM, especialmente con SwiftUI, donde la interfaz es una **función del estado** [SWIFTUI-DOC].
 
-> **[DATO CLAVE EXAMEN]** Correspondencia entre plataformas que conviene tener memorizada: `Activity` (Android) ↔ `UIViewController` (iOS); `AndroidManifest.xml` ↔ `Info.plist`; `Intent` ↔ (no hay equivalente exacto; lo más próximo son los *URL schemes*, los *Universal Links* y las extensiones); `RecyclerView` ↔ `UITableView`/`UICollectionView`; Jetpack Compose ↔ SwiftUI [ANDROID-DEV] [APPLE-DEV].
+> **[DATO CLAVE]** Correspondencia entre plataformas que conviene tener memorizada: `Activity` (Android) ↔ `UIViewController` (iOS); `AndroidManifest.xml` ↔ `Info.plist`; `Intent` ↔ (no hay equivalente exacto; lo más próximo son los *URL schemes*, los *Universal Links* y las extensiones); `RecyclerView` ↔ `UITableView`/`UICollectionView`; Jetpack Compose ↔ SwiftUI [ANDROID-DEV] [APPLE-DEV].
 
 En iOS, los permisos sensibles funcionan siempre **en tiempo de ejecución** y exigen dos elementos: una **cadena de descripción de uso** en `Info.plist` (`NSCameraUsageDescription`, `NSLocationWhenInUseUsageDescription`…) que se muestra literalmente al usuario en el diálogo de consentimiento, y —para ciertas funcionalidades del sistema como notificaciones push, HealthKit, iCloud o Apple Pay— la activación de la **capacidad** (*capability*) correspondiente, que se materializa en el fichero de ***entitlements*** firmado junto a la aplicación. Un permiso solicitado sin su descripción de uso no solo falla en ejecución: **es motivo de rechazo en la revisión** de la App Store [APPLE-DEV] [APPSTORE-REVIEW].
 
@@ -617,7 +617,7 @@ let texto = direccion ?? "Ubicación no disponible"   // valor por defecto
 if let d = direccion { print("Aviso en \(d)") }      // desenvuelto seguro
 ```
 
-> **[DATO CLAVE EXAMEN]** Diferencia de gestión de memoria muy preguntada: **Android/Kotlin/Java usan recolector de basura** (*garbage collector*) en el entorno ART; **iOS/Swift/Objective-C usan ARC**, conteo automático de referencias resuelto **en compilación**. ARC evita las pausas del recolector, pero el programador debe romper los **ciclos de retención** con referencias `weak` [SWIFT-DOC] [ANDROID-ARCH].
+> **[DATO CLAVE]** Diferencia de gestión de memoria: **Android/Kotlin/Java usan recolector de basura** (*garbage collector*) en el entorno ART; **iOS/Swift/Objective-C usan ARC**, conteo automático de referencias resuelto **en compilación**. ARC evita las pausas del recolector, pero el programador debe romper los **ciclos de retención** con referencias `weak` [SWIFT-DOC] [ANDROID-ARCH].
 
 > **[EJERCICIO RESUELTO]** *Problema*: identifique la plataforma y la tecnología a partir de estas tres pistas de un proyecto: (a) el proyecto se construye con **Gradle**; (b) hay un fichero `strings.xml` dentro de `res/values-es/`; (c) el código usa `suspend fun` y `Dispatchers.IO`. *Solución*: es una app **Android nativa escrita en Kotlin**. Gradle es su sistema de construcción; `res/values-es/` es la carpeta de **recursos alternativos** por calificador de idioma (castellano) característica de Android; y `suspend`/`Dispatchers.IO` son **corrutinas** de Kotlin para ejecutar trabajo fuera del hilo principal. Si en lugar de eso se hubiera visto `Info.plist`, `viewDidLoad()` y `async/await`, se trataría de una app **iOS nativa en Swift**.
 
@@ -665,7 +665,7 @@ navigator.geolocation.getCurrentPosition(
 - **Dependencia de plugins de terceros** para cada capacidad del dispositivo: si un plugin queda sin mantenimiento, la funcionalidad se rompe con la siguiente versión del sistema.
 - **Riesgo de superficie web**: heredan las vulnerabilidades típicas de la web (XSS) dentro de una aplicación con acceso a capacidades del dispositivo, lo que agrava el impacto [OWASP-MOBILE].
 
-> **[DATO CLAVE EXAMEN]** En una app **híbrida de contenedor web** (Cordova/Ionic/Capacitor), la interfaz se dibuja en un **WebView** y el acceso al hardware pasa **obligatoriamente por un plugin** con parte nativa, a través de un **puente asíncrono**. Los ficheros web van **empaquetados en el binario**, no se descargan del servidor como una web normal [CORDOVA-DOC] [CAPACITOR-DOC].
+> **[DATO CLAVE]** En una app **híbrida de contenedor web** (Cordova/Ionic/Capacitor), la interfaz se dibuja en un **WebView** y el acceso al hardware pasa **obligatoriamente por un plugin** con parte nativa, a través de un **puente asíncrono**. Los ficheros web van **empaquetados en el binario**, no se descargan del servidor como una web normal [CORDOVA-DOC] [CAPACITOR-DOC].
 
 ### 4.2. Soluciones de compilación y renderizado nativo
 
@@ -701,7 +701,7 @@ export default function ListaAvisos({ avisos, onNuevo }) {
 
 Rasgos característicos de React Native: **recarga rápida** (*fast refresh*) que muestra los cambios de código al instante durante el desarrollo; un ecosistema npm enorme; la posibilidad de escribir **módulos nativos propios** cuando falta una capacidad; y el hecho de que la app **hereda automáticamente el aspecto de cada plataforma**, porque los componentes son los del sistema.
 
-> **[DATO CLAVE EXAMEN]** **React Native NO usa WebView.** El código JavaScript **maneja componentes nativos reales** del sistema. En la arquitectura clásica la comunicación pasaba por un **puente asíncrono con serialización JSON**; en la nueva arquitectura se sustituye por **JSI** (llamada directa desde C++), con **Fabric** y **TurboModules** [RN-DOC].
+> **[DATO CLAVE]** **React Native NO usa WebView.** El código JavaScript **maneja componentes nativos reales** del sistema. En la arquitectura clásica la comunicación pasaba por un **puente asíncrono con serialización JSON**; en la nueva arquitectura se sustituye por **JSI** (llamada directa desde C++), con **Fabric** y **TurboModules** [RN-DOC].
 
 #### 4.2.2. Flutter: motor gráfico, lenguaje Dart y arquitectura de widgets
 
@@ -743,22 +743,22 @@ class ListaAvisos extends StatelessWidget {
 }
 ```
 
-La consecuencia más importante de dibujar la interfaz por cuenta propia es doble, y es la que hay que saber razonar en el examen:
+La consecuencia más importante de dibujar la interfaz por cuenta propia es doble:
 
 - **A favor**: **coherencia visual absoluta** entre plataformas y entre versiones del sistema (la app se ve exactamente igual en todas partes), rendimiento alto sin puente de comunicación, y control total del diseño, incluidas animaciones complejas.
 - **En contra**: la app **no hereda automáticamente** los cambios de aspecto o comportamiento que introduce una versión nueva del sistema —hay que esperar a que Flutter los replique—, el **tamaño del paquete** es mayor porque incorpora el motor, y la **accesibilidad** debe apoyarse en el puente de accesibilidad del propio Flutter (widget `Semantics`) en lugar de en los componentes nativos.
 
-> **[DATO CLAVE EXAMEN]** **React Native vs Flutter**: React Native escribe en **JavaScript** y **renderiza con componentes nativos** del sistema; Flutter escribe en **Dart** y **renderiza con su propio motor gráfico** (Skia/Impeller), dibujando cada píxel. De ahí que Flutter garantice una apariencia idéntica en todas las plataformas y React Native, una apariencia idéntica a la del sistema anfitrión [RN-DOC] [FLUTTER-DOC].
+> **[DATO CLAVE]** **React Native vs Flutter**: React Native escribe en **JavaScript** y **renderiza con componentes nativos** del sistema; Flutter escribe en **Dart** y **renderiza con su propio motor gráfico** (Skia/Impeller), dibujando cada píxel. De ahí que Flutter garantice una apariencia idéntica en todas las plataformas y React Native, una apariencia idéntica a la del sistema anfitrión [RN-DOC] [FLUTTER-DOC].
 
 Junto a estos dos dominantes conviene conocer, al menos por nombre, dos alternativas presentes en el sector público: **.NET MAUI** (Microsoft, sucesor de Xamarin.Forms), que usa **C#** y renderiza con controles nativos, atractivo cuando la organización ya trabaja sobre .NET [MAUI-DOC]; y **Kotlin Multiplatform**, que **comparte la lógica de negocio** en Kotlin pero mantiene **interfaz nativa** en cada plataforma, un compromiso intermedio entre nativo puro y multiplataforma total [KMP-DOC].
 
-> **[EJEMPLO AYTO MADRID]** Si el Ayuntamiento quisiera que la app de avisos tuviera **exactamente la misma imagen de marca** en Android y en iOS, con animaciones propias y un único equipo, **Flutter** sería una elección coherente. Si, por el contrario, prioriza que cada ciudadano perciba la app como **propia de su sistema** (gestos, tipografías y componentes del sistema) reutilizando un equipo con experiencia en React, la elección natural sería **React Native**. Y si el requisito dominante fuera el uso intensivo de **NFC del DNI electrónico** y de capacidades muy recientes del sistema, la elección sería **nativa**.
+> **[EJEMPLO DE APLICACIÓN EN EL AYTO]** Si el Ayuntamiento quisiera que la app de avisos tuviera **exactamente la misma imagen de marca** en Android y en iOS, con animaciones propias y un único equipo, **Flutter** sería una elección coherente. Si, por el contrario, prioriza que cada ciudadano perciba la app como **propia de su sistema** (gestos, tipografías y componentes del sistema) reutilizando un equipo con experiencia en React, la elección natural sería **React Native**. Y si el requisito dominante fuera el uso intensivo de **NFC del DNI electrónico** y de capacidades muy recientes del sistema, la elección sería **nativa**.
 
 ---
 
 ## 5. Comparativa tecnológica y criterios de selección
 
-La elección de enfoque no tiene una respuesta universal: **depende de los requisitos**. Lo que sí puede sistematizarse son los **criterios** con los que decidir, que se corresponden en buena medida con las características de calidad del producto software de la norma **ISO/IEC 25010** (eficiencia de desempeño, seguridad, mantenibilidad, portabilidad, usabilidad) [ISO25010].
+La elección de enfoque no tiene una respuesta universal: **depende de los requisitos**. Lo que sí puede sistematizarse son los **criterios** con los que decidir, que se corresponden en buena medida con las características de calidad del producto software de la norma **ISO/IEC 25010:2023** (eficiencia de desempeño, seguridad, mantenibilidad, flexibilidad —la antigua «portabilidad»— y capacidad de interacción —la antigua «usabilidad»—) [ISO25010].
 
 ### 5.1. Evaluación de rendimiento, consumo de recursos y seguridad
 
@@ -776,16 +776,16 @@ En **consumo de batería y memoria** el orden es equivalente: cuantas más capas
 **Seguridad.** Los riesgos son en su mayoría **independientes del enfoque** y están catalogados en el **OWASP Mobile Top 10** y verificables con el **MASVS** [OWASP-MOBILE] [OWASP-MASVS]. Los principales:
 
 - **Almacenamiento inseguro de datos**: credenciales o datos personales en preferencias, ficheros o registros de depuración en lugar de en Keystore/Keychain.
-- **Comunicación insegura**: HTTP en claro, aceptación de certificados no válidos o desactivación de la validación TLS «para pruebas» que llega a producción [RFC8446].
+- **Comunicación insegura**: HTTP en claro, aceptación de certificados no válidos o desactivación de la validación TLS «para pruebas» que llega a producción [RFC9846].
 - **Autenticación y autorización deficientes**: confiar la comprobación de permisos al cliente (que es manipulable) en lugar de al servidor.
 - **Código y binario manipulables**: ingeniería inversa del paquete, extracción de **claves de API incrustadas en el código** —un error muy frecuente: todo secreto embarcado en la app debe considerarse público— y aplicaciones modificadas y redistribuidas por canales no oficiales.
 - **Superficie propia del enfoque**: el híbrido de contenedor web añade la posibilidad de **XSS dentro de una app con permisos de dispositivo**; los enfoques multiplataforma añaden la **cadena de suministro** de las dependencias de terceros (npm, pub.dev) como vector de riesgo.
 
 A ello se suman, en el sector público, los requisitos del **ENS** (autenticación, cifrado en tránsito, trazabilidad, gestión del ciclo de vida) [ENS] y del **RGPD**: minimización de datos, base jurídica para tratar la geolocalización, información transparente en la ficha de la tienda y gestión de los identificadores del dispositivo [RGPD].
 
-> **[DATO CLAVE EXAMEN]** Regla de seguridad móvil que se repite en examen: **cualquier secreto incrustado en la aplicación (clave de API, contraseña, certificado) debe considerarse comprometido**, porque el paquete instalado es analizable por ingeniería inversa. Las comprobaciones de seguridad decisivas se hacen **siempre en el servidor**, nunca en el cliente [OWASP-MASVS] [OWASP-MOBILE].
+> **[DATO CLAVE]** Regla de seguridad móvil: **cualquier secreto incrustado en la aplicación (clave de API, contraseña, certificado) debe considerarse comprometido**, porque el paquete instalado es analizable por ingeniería inversa. Las comprobaciones de seguridad decisivas se hacen **siempre en el servidor**, nunca en el cliente [OWASP-MASVS] [OWASP-MOBILE].
 
-> **[REFERENCIA CRUZADA]** La **seguridad de los sistemas de información** (amenazas, criptografía, firma digital) corresponde al **Tema 32**; los **principios del ENS y el ENI**, al **Tema 39**; la **seguridad en el puesto de usuario**, al **Tema 25**; la **seguridad perimetral y el acceso remoto seguro (VPN)**, al **Tema 36**. Aquí solo se tratan los riesgos **específicos de una aplicación móvil**.
+> **[RELACIÓN CON OTROS TEMAS]** La **seguridad de los sistemas de información** (amenazas, criptografía, firma digital) corresponde al **Tema 32**; los **principios del ENS y el ENI**, al **Tema 39**; la **seguridad en el puesto de usuario**, al **Tema 25**; la **seguridad perimetral y el acceso remoto seguro (VPN)**, al **Tema 36**. Aquí solo se tratan los riesgos **específicos de una aplicación móvil**.
 
 ### 5.2. Reutilización de código, mantenibilidad y costes de desarrollo
 
@@ -837,13 +837,13 @@ La publicación es una fase con reglas propias que **no depende del enfoque eleg
 - **TestFlight** para pruebas con usuarios internos y externos antes de publicar; publicación por fases también disponible.
 - **Etiquetas de privacidad** (*privacy nutrition labels*) obligatorias, declarando qué datos recoge la app y con qué finalidad.
 
-> **[DATO CLAVE EXAMEN]** Diferencias de publicación más preguntadas: **Google Play** distribuye **AAB** (obligatorio para apps nuevas desde 2021), cuota de desarrollador de **pago único** y revisión mayoritariamente automatizada; **App Store** distribuye **IPA**, exige cuota **anual** del Apple Developer Program y somete **toda** aplicación a **revisión humana**. Ambas exigen **firma digital** del paquete [PLAY-CONSOLE] [APPSTORE-REVIEW].
+> **[DATO CLAVE]** Diferencias de publicación: **Google Play** distribuye **AAB** (obligatorio para apps nuevas desde 2021), cuota de desarrollador de **pago único** y revisión mayoritariamente automatizada; **App Store** distribuye **IPA**, exige cuota **anual** del Apple Developer Program y somete **toda** aplicación a **revisión humana**. Ambas exigen **firma digital** del paquete [PLAY-CONSOLE] [APPSTORE-REVIEW].
 
 **Distribución fuera de las tiendas públicas.** Una administración necesita a menudo distribuir aplicaciones **internas** que no deben aparecer en el catálogo público: para ello existen los canales de empresa (distribución gestionada de Google Play, Apple Business Manager y programa de empresa de Apple) y las plataformas de **gestión de dispositivos móviles (MDM)**, que instalan y actualizan las apps en los terminales corporativos y aplican políticas de seguridad. En Android es técnicamente posible instalar un APK directamente (*sideloading*), práctica desaconsejada para uso corporativo por sus riesgos de seguridad y por la falta de control de versiones.
 
 **Despliegue continuo y ciclo de vida.** Las buenas prácticas de entrega aplicables a un proyecto móvil incluyen: **integración continua** que compile y pruebe cada cambio, **versionado semántico** con número de versión visible y código de versión incremental, distribución de compilaciones de prueba (canal interno o TestFlight), **publicación por fases** vigilando los indicadores de fallos, y capacidad de **desactivar funcionalidades en caliente** (banderas de característica) para no depender de una actualización de la tienda ante un incidente. Conviene recordar que, a diferencia de la web, **el usuario puede tardar semanas en actualizar**, o no actualizar nunca: la app debe tolerar versiones antiguas conviviendo con el servidor, lo que obliga a **versionar la API** y a mantener compatibilidad hacia atrás.
 
-> **[EJEMPLO AYTO MADRID]** Un despliegue prudente de la app de avisos sería: publicar la versión candidata en el **canal interno** de Google Play y en **TestFlight** para el equipo del Ayuntamiento y de la empresa adjudicataria; abrir después una **beta cerrada** con un grupo de vecinos voluntarios; y finalmente activar una **publicación por fases** al 5 %, 20 % y 100 %, vigilando la tasa de fallos y las valoraciones. Si aparece un fallo grave, se detiene el despliegue sin haber afectado a toda la ciudadanía. Y como en iOS toda actualización pasa por **revisión humana**, el calendario del proyecto debe reservar días de margen para ese trámite, algo que suele olvidarse en la planificación.
+> **[EJEMPLO DE APLICACIÓN EN EL AYTO]** Un despliegue prudente de la app de avisos sería: publicar la versión candidata en el **canal interno** de Google Play y en **TestFlight** para el equipo del Ayuntamiento y de la empresa adjudicataria; abrir después una **beta cerrada** con un grupo de vecinos voluntarios; y finalmente activar una **publicación por fases** al 5 %, 20 % y 100 %, vigilando la tasa de fallos y las valoraciones. Si aparece un fallo grave, se detiene el despliegue sin haber afectado a toda la ciudadanía. Y como en iOS toda actualización pasa por **revisión humana**, el calendario del proyecto debe reservar días de margen para ese trámite, algo que suele olvidarse en la planificación.
 
-> **[DATO CLAVE EXAMEN]** Resumen de criterios de selección, en el orden en que conviene aplicarlos: **1)** ¿necesita hardware o API muy específicas o de última hora? → **nativo**; **2)** ¿necesita máximo rendimiento gráfico o de interacción? → **nativo o Flutter**; **3)** ¿hay que llegar a las dos plataformas con un solo equipo y presupuesto ajustado? → **multiplataforma compilado**; **4)** ¿el equipo es web y las necesidades de dispositivo son básicas? → **híbrido de contenedor web**; **5)** ¿no hace falta hardware ni tienda y se prioriza la actualización inmediata? → **PWA** [ISO25010].
+> **[DATO CLAVE]** Resumen de criterios de selección, en el orden en que conviene aplicarlos: **1)** ¿necesita hardware o API muy específicas o de última hora? → **nativo**; **2)** ¿necesita máximo rendimiento gráfico o de interacción? → **nativo o Flutter**; **3)** ¿hay que llegar a las dos plataformas con un solo equipo y presupuesto ajustado? → **multiplataforma compilado**; **4)** ¿el equipo es web y las necesidades de dispositivo son básicas? → **híbrido de contenedor web**; **5)** ¿no hace falta hardware ni tienda y se prioriza la actualización inmediata? → **PWA** [ISO25010].
 
